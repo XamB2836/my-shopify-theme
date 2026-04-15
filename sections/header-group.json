@@ -121,10 +121,10 @@
         "secondary_link": "",
         "button_gap": 12,
         "feature_background": "#ffffff",
-        "feature_text_color": "#111827",
+        "feature_text_color": "#fafafa",
         "feature_border_color": "#d1d5db",
         "feature_gap": 10,
-        "color_scheme": ""
+        "color_scheme": "scheme-5"
       }
     }
   },
