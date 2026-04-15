@@ -117,76 +117,37 @@
     },
     "custom_hero_banner_RndDcp": {
       "type": "custom-hero-banner",
-      "blocks": {
-        "feature_AzX4QT": {
-          "type": "feature",
-          "settings": {
-            "icon": "*",
-            "title": "Fast shipping",
-            "caption": "2-5 business days"
-          }
-        },
-        "feature_nibxq4": {
-          "type": "feature",
-          "settings": {
-            "icon": "*",
-            "title": "Fast shipping",
-            "caption": "2-5 business days"
-          }
-        },
-        "feature_jfmEfF": {
-          "type": "feature",
-          "settings": {
-            "icon": "*",
-            "title": "Fast shipping",
-            "caption": "2-5 business days"
-          }
-        },
-        "feature_67gexc": {
-          "type": "feature",
-          "settings": {
-            "icon": "*",
-            "title": "Fast shipping",
-            "caption": "2-5 business days"
-          }
-        }
-      },
-      "block_order": [
-        "feature_AzX4QT",
-        "feature_nibxq4",
-        "feature_jfmEfF",
-        "feature_67gexc"
-      ],
       "name": "Custom hero banner",
       "settings": {
-        "desktop_image": "shopify://shop_images/gamer-backgrounnd-abbstardty-unnnitone-color.png",
-        "media_position_desktop": "",
+        "desktop_image": "shopify://shop_images/Creation_sans_titre.png",
+        "mobile_image": "shopify://shop_images/Creation_sans_titre.png",
+        "media_position_desktop": "center center",
         "media_position_mobile": "center center",
         "min_height_desktop": 40,
         "min_height_mobile": 68,
-        "enable_overlay": false,
+        "enable_overlay": true,
         "overlay_color": "#0f172a",
-        "overlay_opacity": 35,
+        "overlay_opacity": 49,
         "overlay_blur": 0,
         "panel_background": "#111827",
-        "panel_opacity": 68,
+        "panel_opacity": 0,
         "panel_text_color": "#ffffff",
-        "eyebrow": "New collection",
-        "heading": "A fully custom hero banner",
-        "subheading": "<p>Tell your story with custom alignment, spacing, overlays, CTA styles, and feature chips.</p>",
+        "eyebrow": "ERGONOMIC GAMING",
+        "heading": "Play Longer. Perform Better.",
+        "subheading": "<p><br/>Built for serious gamers</p>",
         "content_vertical": "center",
         "content_horizontal": "start",
-        "text_alignment": "center",
-        "content_max_width": 560,
-        "content_padding": 36,
-        "content_gap": 18,
-        "heading_size_desktop": 56,
-        "heading_size_mobile": 36,
-        "eyebrow_size": 13,
+        "text_alignment": "left",
+        "content_max_width": 500,
+        "content_padding": 80,
+        "content_gap": 24,
+        "heading_size_desktop": 64,
+        "heading_size_mobile": 38,
+        "eyebrow_size": 12,
         "text_size": 17,
-        "primary_label": "Shop now",
-        "primary_link": "",
-        "secondary_label": "Learn more",
+        "primary_label": "Shop Setup",
+        "primary_link": "shopify://products/serenity-mat",
+        "secondary_label": "",
         "secondary_link": "",
         "button_gap": 12,
         "feature_background": "#ffffff",
