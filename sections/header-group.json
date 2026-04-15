@@ -11,34 +11,49 @@
   "type": "header",
   "name": "Header",
   "sections": {
+    "zentra_announcement_bar": {
+      "type": "zentra-announcement-bar",
+      "settings": {
+        "enable_bar": true,
+        "enable_marquee": true,
+        "announcement_text": "Free shipping on orders over $75 &bull; Designed for serious gamers &bull; Play longer. Stay comfortable &bull; Optimize your setup",
+        "speed_seconds": 20,
+        "pause_on_hover": true,
+        "link_url": "",
+        "background_color": "#0B0B0B",
+        "text_color": "#FFFFFF",
+        "font_size_desktop": 13,
+        "font_size_mobile": 12,
+        "bar_padding_y": 8,
+        "letter_spacing": 0.4,
+        "font_weight": "600",
+        "text_transform": "none",
+        "show_separator": true,
+        "separator_character": "&bull;"
+      }
+    },
     "header_announcements_9jGBFp": {
       "type": "header-announcements",
-      "blocks": {
-        "announcement_BxgCk9": {
-          "type": "_announcement",
-          "settings": {
-            "text": "Welcome to our store",
-            "link": "",
-            "font": "var(--font-subheading--family)",
-            "font_size": "0.75rem",
-            "weight": "",
-            "letter_spacing": "normal",
-            "case": "none"
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "announcement_BxgCk9"
-      ],
-      "name": "t:names.announcement_bar",
+      "blocks": {},
+      "block_order": [],
+      "name": "Zentra marquee bar",
       "settings": {
-        "speed": 5,
-        "section_width": "page-width",
-        "color_scheme": "scheme-1",
-        "divider_width": 1,
-        "padding-block-start": 15,
-        "padding-block-end": 15
+        "enable_bar": true,
+        "enable_marquee": true,
+        "announcement_text": "Free shipping on orders over $75 &bull; Designed for serious gamers &bull; Play longer. Stay comfortable &bull; Optimize your setup",
+        "speed_seconds": 20,
+        "pause_on_hover": true,
+        "link_url": "",
+        "background_color": "#0B0B0B",
+        "text_color": "#FFFFFF",
+        "font_size_desktop": 13,
+        "font_size_mobile": 12,
+        "bar_padding_y": 8,
+        "letter_spacing": 0.4,
+        "font_weight": "600",
+        "text_transform": "none",
+        "show_separator": true,
+        "separator_character": "&bull;"
       }
     },
     "header_section": {
@@ -198,6 +213,7 @@
     }
   },
   "order": [
+    "zentra_announcement_bar",
     "header_announcements_9jGBFp",
     "header_section",
     "custom_hero_banner_RndDcp"
