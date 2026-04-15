@@ -15,3 +15,13 @@
 [3] http://127.0.0.1:9292/gift_cards/[store_id]/preview
 
 • 16 h 42 min 32 s Request »    GET 200 / 509ms
+• 16 h 44 min 53 s  Synced » update templates/index.json
+╭─ error ──────────────────────────────────────────────────────────────────────╮
+│                                                                              │
+│  Failed to upload file "sections/header-group.json" to remote theme.         │
+│                                                                              │
+│  Invalid JSON in sections/header-group.json                                  │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+• 16 h 44 min 54 s  Synced » update config/settings_data.json
