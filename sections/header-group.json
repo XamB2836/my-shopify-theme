@@ -127,7 +127,7 @@
         "min_height_mobile": 68,
         "enable_overlay": true,
         "overlay_color": "#0f172a",
-        "overlay_opacity": 49,
+        "overlay_opacity": 40,
         "overlay_blur": 0,
         "panel_background": "#111827",
         "panel_opacity": 0,
