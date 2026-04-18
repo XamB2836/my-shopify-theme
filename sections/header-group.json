@@ -11,51 +11,6 @@
   "type": "header",
   "name": "Header",
   "sections": {
-    "zentra_announcement_bar": {
-      "type": "zentra-announcement-bar",
-      "settings": {
-        "enable_bar": true,
-        "enable_marquee": true,
-        "announcement_text": "Free shipping on orders over $75 &bull; Designed for serious gamers &bull; Play longer. Stay comfortable &bull; Optimize your setup",
-        "speed_seconds": 20,
-        "pause_on_hover": true,
-        "link_url": "",
-        "background_color": "#0B0B0B",
-        "text_color": "#FFFFFF",
-        "font_size_desktop": 13,
-        "font_size_mobile": 12,
-        "bar_padding_y": 8,
-        "letter_spacing": 0.4,
-        "font_weight": "600",
-        "text_transform": "none",
-        "show_separator": true,
-        "separator_character": "&bull;"
-      }
-    },
-    "header_announcements_9jGBFp": {
-      "type": "header-announcements",
-      "blocks": {},
-      "block_order": [],
-      "name": "Zentra marquee bar",
-      "settings": {
-        "enable_bar": true,
-        "enable_marquee": true,
-        "announcement_text": "Free shipping on orders over $75 &bull; Designed for serious gamers &bull; Play longer. Stay comfortable &bull; Optimize your setup",
-        "speed_seconds": 20,
-        "pause_on_hover": true,
-        "link_url": "",
-        "background_color": "#0B0B0B",
-        "text_color": "#FFFFFF",
-        "font_size_desktop": 13,
-        "font_size_mobile": 12,
-        "bar_padding_y": 8,
-        "letter_spacing": 0.4,
-        "font_weight": "600",
-        "text_transform": "none",
-        "show_separator": true,
-        "separator_character": "&bull;"
-      }
-    },
     "header_section": {
       "type": "header",
       "blocks": {
@@ -174,8 +129,6 @@
     }
   },
   "order": [
-    "zentra_announcement_bar",
-    "header_announcements_9jGBFp",
     "header_section",
     "custom_hero_banner_RndDcp"
   ]
