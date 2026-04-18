@@ -17,7 +17,7 @@
           "settings": {
             "product": "serenity-mat",
             "benefit_text": "Improve screen height",
-            "custom_cta_label": ""
+            "custom_cta_label": "Shop Now"
           }
         },
         "product_qEzAkU": {
@@ -25,7 +25,7 @@
           "settings": {
             "product": "wrist-support-pro",
             "benefit_text": "Reduce wrist strain",
-            "custom_cta_label": ""
+            "custom_cta_label": "Shop Now"
           }
         },
         "product_nXjxMY": {
@@ -33,7 +33,7 @@
           "settings": {
             "product": "lumbar-support-pad",
             "benefit_text": "Better posture support",
-            "custom_cta_label": ""
+            "custom_cta_label": "Shop Now"
           }
         },
         "product_Ek44ab": {
@@ -41,7 +41,7 @@
           "settings": {
             "product": "gaming-foot-rest",
             "benefit_text": "More comfort, longer sessions",
-            "custom_cta_label": ""
+            "custom_cta_label": "Shop Now"
           }
         }
       },
