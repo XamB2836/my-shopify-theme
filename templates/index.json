@@ -16,7 +16,7 @@
           "type": "product",
           "settings": {
             "product": "serenity-mat",
-            "benefit_text": "Reduce wrist strain",
+            "benefit_text": "Improve screen height",
             "custom_cta_label": ""
           }
         },
@@ -32,7 +32,7 @@
           "type": "product",
           "settings": {
             "product": "lumbar-support-pad",
-            "benefit_text": "Built for long sessions",
+            "benefit_text": "Better posture support",
             "custom_cta_label": ""
           }
         },
@@ -40,7 +40,7 @@
           "type": "product",
           "settings": {
             "product": "gaming-foot-rest",
-            "benefit_text": "Built for long sessions",
+            "benefit_text": "More comfort, longer sessions",
             "custom_cta_label": ""
           }
         }
