@@ -23,7 +23,7 @@
         "product_qEzAkU": {
           "type": "product",
           "settings": {
-            "product": "",
+            "product": "wrist-support-pro",
             "benefit_text": "Built for long sessions",
             "custom_cta_label": ""
           }
@@ -31,7 +31,7 @@
         "product_nXjxMY": {
           "type": "product",
           "settings": {
-            "product": "",
+            "product": "lumbar-support-pad",
             "benefit_text": "Built for long sessions",
             "custom_cta_label": ""
           }
@@ -39,7 +39,7 @@
         "product_Ek44ab": {
           "type": "product",
           "settings": {
-            "product": "",
+            "product": "gaming-foot-rest",
             "benefit_text": "Built for long sessions",
             "custom_cta_label": ""
           }
@@ -65,7 +65,7 @@
         "color_background": "#0b0b0b",
         "color_text": "#ffffff",
         "color_muted_text": "#b8b8b8",
-        "color_accent": "#c62ffd",
+        "color_accent": "#ff2a2a",
         "card_background": "#141414",
         "card_border_color": "#2a2a2a",
         "show_prices": true,
