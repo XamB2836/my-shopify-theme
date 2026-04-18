@@ -12,14 +12,6 @@
     "featured_products_premium_8gyfkq": {
       "type": "featured-products-premium",
       "blocks": {
-        "product_Ek44ab": {
-          "type": "product",
-          "settings": {
-            "product": "",
-            "benefit_text": "Built for long sessions",
-            "custom_cta_label": ""
-          }
-        },
         "product_hmEaLY": {
           "type": "product",
           "settings": {
@@ -27,11 +19,37 @@
             "benefit_text": "Built for long sessions",
             "custom_cta_label": ""
           }
+        },
+        "product_qEzAkU": {
+          "type": "product",
+          "settings": {
+            "product": "",
+            "benefit_text": "Built for long sessions",
+            "custom_cta_label": ""
+          }
+        },
+        "product_nXjxMY": {
+          "type": "product",
+          "settings": {
+            "product": "",
+            "benefit_text": "Built for long sessions",
+            "custom_cta_label": ""
+          }
+        },
+        "product_Ek44ab": {
+          "type": "product",
+          "settings": {
+            "product": "",
+            "benefit_text": "Built for long sessions",
+            "custom_cta_label": ""
+          }
         }
       },
       "block_order": [
-        "product_Ek44ab",
-        "product_hmEaLY"
+        "product_hmEaLY",
+        "product_qEzAkU",
+        "product_nXjxMY",
+        "product_Ek44ab"
       ],
       "name": "Featured products premium",
       "settings": {
@@ -40,7 +58,7 @@
         "subheading": "Everything you need to play longer and stay comfortable.",
         "source_mode": "manual",
         "collection": "",
-        "products_to_show": 2,
+        "products_to_show": 4,
         "columns_desktop": "4",
         "columns_mobile": "2",
         "section_width": "page",
