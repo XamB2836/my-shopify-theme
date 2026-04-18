@@ -13,12 +13,15 @@
     zentra-featured-products-{{ section.id }}
     zentra-featured-products--{{ section_width }}
     {% if section.settings.enable_hover_effect %}zentra-featured-products--hover{% endif %}
+    {% if section.settings.enable_gradient_background %}zentra-featured-products--gradient{% endif %}
   "
   style="
     --zf-bg: {{ section.settings.color_background | default: '#0B0B0B' }};
     --zf-text: {{ section.settings.color_text | default: '#FFFFFF' }};
-    --zf-muted: {{ section.settings.color_muted_text | default: 'rgba(255,255,255,0.72)' }};
+    --zf-muted: {{ section.settings.color_muted_text | default: '#B8B8B8' }};
     --zf-accent: {{ section.settings.color_accent | default: '#FF2A2A' }};
+    --zf-pink: #FF3FD8;
+    --zf-blue: #3A8DFF;
     --zf-card-bg: {{ section.settings.card_background | default: '#141414' }};
     --zf-card-border: {{ section.settings.card_border_color | default: 'rgba(255,255,255,0.08)' }};
     --zf-card-radius: {{ section.settings.card_radius | default: 18 }}px;
@@ -107,12 +110,16 @@
 
 <style>
   .zentra-featured-products {
-    background:
-      radial-gradient(circle at 18% 12%, rgb(255 42 42 / 0.12), transparent 28rem),
-      radial-gradient(circle at 88% 10%, rgb(55 95 255 / 0.1), transparent 30rem),
-      var(--zf-bg);
+    background: var(--zf-bg);
     color: var(--zf-text);
     padding-block: var(--zf-padding-top) var(--zf-padding-bottom);
+  }
+
+  .zentra-featured-products--gradient {
+    background:
+      radial-gradient(circle at 20% 30%, rgba(255, 42, 42, 0.12), transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(58, 141, 255, 0.12), transparent 40%),
+      var(--zf-bg);
   }
 
   .zentra-featured-products__inner {
@@ -132,9 +139,9 @@
   .zentra-featured-products__eyebrow {
     margin: 0 0 12px;
     color: var(--zf-accent);
-    font-size: 0.74rem;
+    font-size: 12px;
     font-weight: 700;
-    letter-spacing: 0.14em;
+    letter-spacing: 2px;
     line-height: 1;
     text-transform: uppercase;
   }
@@ -168,23 +175,23 @@
     min-width: 0;
     flex-direction: column;
     overflow: hidden;
-    padding: 14px;
+    padding: 18px;
     border: 1px solid var(--zf-card-border);
     border-radius: var(--zf-card-radius);
-    background:
-      linear-gradient(145deg, rgb(255 255 255 / 0.05), transparent 34%),
-      var(--zf-card-bg);
-    box-shadow: 0 18px 50px rgb(0 0 0 / 0.22);
+    background: var(--zf-card-bg);
+    box-shadow: 0 18px 44px rgb(0 0 0 / 0.18);
     transition:
-      border-color 180ms ease,
-      box-shadow 180ms ease,
-      transform 180ms ease;
+      border-color 0.3s ease,
+      box-shadow 0.3s ease,
+      transform 0.3s ease;
   }
 
   .zentra-featured-products--hover .zentra-product-card:hover {
     border-color: var(--zf-accent);
-    box-shadow: 0 22px 70px rgb(0 0 0 / 0.32);
-    transform: translateY(-4px);
+    box-shadow:
+      0 10px 30px rgba(255, 42, 42, 0.15),
+      0 0 20px rgba(255, 42, 42, 0.08);
+    transform: translateY(-6px);
   }
 
   .zentra-product-card__media {
@@ -193,7 +200,7 @@
     overflow: hidden;
     border-radius: calc(var(--zf-card-radius) - 6px);
     background:
-      radial-gradient(circle at 50% 20%, rgb(255 255 255 / 0.08), transparent 46%),
+      radial-gradient(circle at 50% 20%, rgb(255 255 255 / 0.06), transparent 46%),
       #0f0f0f;
     text-decoration: none;
   }
@@ -218,11 +225,11 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 240ms ease;
+    transition: transform 0.3s ease;
   }
 
   .zentra-featured-products--hover .zentra-product-card:hover .zentra-product-card__image {
-    transform: scale(1.035);
+    transform: scale(1.03);
   }
 
   .zentra-product-card__placeholder {
@@ -285,7 +292,7 @@
   .zentra-product-card__price {
     color: var(--zf-text);
     font-size: 0.95rem;
-    font-weight: 700;
+    font-weight: 800;
     line-height: 1;
   }
 
@@ -305,9 +312,9 @@
     justify-content: center;
     min-height: 40px;
     padding: 0 16px;
-    border: 1px solid rgb(255 255 255 / 0.12);
+    border: 1px solid var(--zf-card-border);
     border-radius: 8px;
-    background: rgb(255 255 255 / 0.06);
+    background: transparent;
     color: var(--zf-text);
     font-size: 0.78rem;
     font-weight: 800;
@@ -498,6 +505,12 @@
     {
       "type": "header",
       "content": "Colors"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_gradient_background",
+      "label": "Enable subtle neon gradient background",
+      "default": true
     },
     {
       "type": "color",
