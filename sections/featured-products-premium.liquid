@@ -105,7 +105,7 @@
   </div>
 </section>
 
-{% stylesheet %}
+<style>
   .zentra-featured-products {
     background:
       radial-gradient(circle at 18% 12%, rgb(255 42 42 / 0.12), transparent 28rem),
@@ -182,7 +182,7 @@
   }
 
   .zentra-featured-products--hover .zentra-product-card:hover {
-    border-color: color-mix(in srgb, var(--zf-accent) 45%, var(--zf-card-border));
+    border-color: var(--zf-accent);
     box-shadow: 0 22px 70px rgb(0 0 0 / 0.32);
     transform: translateY(-4px);
   }
@@ -393,7 +393,7 @@
       width: 100%;
     }
   }
-{% endstylesheet %}
+</style>
 
 {% schema %}
 {
