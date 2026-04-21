@@ -9,6 +9,7 @@
  */
 {
 
+
     "sections":  {
                      "featured_products_premium_8gyfkq":  {
                                                               "type":  "featured-products-premium",
@@ -630,9 +631,9 @@
                                                             "name":  "Gaming problem solution",
                                                             "settings":  {
                                                                              "eyebrow":  "SETUP PROBLEMS",
-                                                                             "heading":  "Gaming shouldnâ€™t hurt.",
+                                                                             "heading":  "Gaming shouldnÃ¢â‚¬â„¢t hurt.",
                                                                              "subheading":  "Long gaming sessions can lead to wrist pain, neck tension and poor posture.",
-                                                                             "solution_line":  "We fix your setup â€” not just your posture.",
+                                                                             "solution_line":  "We fix your setup Ã¢â‚¬â€ not just your posture.",
                                                                              "section_width":  "page",
                                                                              "columns_desktop":  "3",
                                                                              "enable_background_glow":  true,
