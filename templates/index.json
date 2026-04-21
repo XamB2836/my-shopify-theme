@@ -641,8 +641,8 @@
                                                                              "color_accent":  "#FF2A2A",
                                                                              "card_background":  "#141414",
                                                                              "card_border":  "#2A2A2A",
-                                                                             "section_padding_top":  90,
-                                                                             "section_padding_bottom":  90
+                                                                             "section_padding_top": 88,
+                                                                             "section_padding_bottom": 88
                                                                          }
                                                         }
                  },
