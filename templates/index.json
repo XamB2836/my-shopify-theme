@@ -62,6 +62,7 @@
         "columns_desktop": "4",
         "columns_mobile": "2",
         "section_width": "page",
+        "enable_gradient_background": true,
         "color_background": "#0b0b0b",
         "color_text": "#ffffff",
         "color_muted_text": "#b8b8b8",
