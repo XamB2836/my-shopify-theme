@@ -43,22 +43,13 @@
             "benefit_text": "More comfort, longer sessions",
             "custom_cta_label": "Shop Now"
           }
-        },
-        "product_ATjqdg": {
-          "type": "product",
-          "settings": {
-            "product": "",
-            "benefit_text": "Built for long sessions",
-            "custom_cta_label": ""
-          }
         }
       },
       "block_order": [
         "product_hmEaLY",
         "product_qEzAkU",
         "product_nXjxMY",
-        "product_Ek44ab",
-        "product_ATjqdg"
+        "product_Ek44ab"
       ],
       "name": "Featured products premium",
       "settings": {
@@ -144,7 +135,7 @@
         "color_muted": "#b8b8b8",
         "color_accent": "#ff2a2a",
         "card_background": "#141414",
-        "card_border": "#2a2a2a",
+        "card_border": "rgba(0,0,0,0)",
         "section_padding_top": 76,
         "section_padding_bottom": 88
       }
