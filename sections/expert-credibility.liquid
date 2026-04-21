@@ -1,0 +1,609 @@
+{% liquid
+  assign section_width = section.settings.section_width | default: 'page'
+%}
+
+<section
+  class="
+    zentra-expert
+    zentra-expert-{{ section.id }}
+    zentra-expert--{{ section_width }}
+    {% if section.settings.enable_background_glow %}zentra-expert--glow{% endif %}
+  "
+  style="
+    --ze-bg: {{ section.settings.color_background | default: '#0B0B0B' }};
+    --ze-text: {{ section.settings.color_text | default: '#FFFFFF' }};
+    --ze-muted: {{ section.settings.color_muted | default: '#B8B8B8' }};
+    --ze-accent: {{ section.settings.color_accent | default: '#FF2A2A' }};
+    --ze-card-bg: {{ section.settings.card_background | default: '#141414' }};
+    --ze-card-border: {{ section.settings.card_border | default: '#2A2A2A' }};
+    --ze-padding-top: {{ section.settings.section_padding_top | default: 100 }}px;
+    --ze-padding-bottom: {{ section.settings.section_padding_bottom | default: 100 }}px;
+  "
+>
+  <div class="zentra-expert__inner">
+    <div class="zentra-expert__grid">
+      <div class="zentra-expert__visual">
+        {% if section.settings.expert_image != blank %}
+          {{
+            section.settings.expert_image
+            | image_url: width: 1400
+            | image_tag:
+              class: 'zentra-expert__image',
+              widths: '420, 640, 840, 1100, 1400',
+              sizes: '(min-width: 990px) 46vw, 100vw',
+              loading: 'lazy'
+          }}
+        {% else %}
+          <div class="zentra-expert__placeholder" aria-hidden="true">
+            <div class="zentra-expert__placeholder-mark">
+              <span></span>
+            </div>
+          </div>
+        {% endif %}
+
+        {% if section.settings.expert_badge_text != blank %}
+          <div class="zentra-expert__badge">
+            {{ section.settings.expert_badge_text }}
+          </div>
+        {% endif %}
+      </div>
+
+      <div class="zentra-expert__content">
+        {% if section.settings.eyebrow != blank %}
+          <p class="zentra-expert__eyebrow">{{ section.settings.eyebrow }}</p>
+        {% endif %}
+
+        {% if section.settings.heading != blank %}
+          <h2 class="zentra-expert__heading">{{ section.settings.heading }}</h2>
+        {% endif %}
+
+        {% if section.settings.subheading != blank %}
+          <div class="zentra-expert__subheading">
+            {{ section.settings.subheading | escape | newline_to_br }}
+          </div>
+        {% endif %}
+
+        {% if section.settings.body_text != blank %}
+          <div class="zentra-expert__body">
+            {{ section.settings.body_text | escape | newline_to_br }}
+          </div>
+        {% endif %}
+
+        {% if section.blocks.size > 0 %}
+          <div class="zentra-expert__trust-list">
+            {% for block in section.blocks %}
+              {% liquid
+                assign icon_color = block.settings.icon_color | default: section.settings.color_accent
+              %}
+
+              <div
+                class="zentra-expert__trust-item"
+                style="--ze-icon-color: {{ icon_color }};"
+                {{ block.shopify_attributes }}
+              >
+                <span class="zentra-expert__trust-icon" aria-hidden="true"></span>
+
+                <div class="zentra-expert__trust-copy">
+                  {% if block.settings.title != blank %}
+                    <h3 class="zentra-expert__trust-title">{{ block.settings.title }}</h3>
+                  {% endif %}
+
+                  {% if block.settings.description != blank %}
+                    <div class="zentra-expert__trust-text">
+                      {{ block.settings.description | escape | newline_to_br }}
+                    </div>
+                  {% endif %}
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        {% endif %}
+
+        {% if section.settings.cta_label != blank and section.settings.cta_link != blank %}
+          <a class="zentra-expert__cta" href="{{ section.settings.cta_link }}">
+            {{ section.settings.cta_label }}
+          </a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .zentra-expert {
+    background:
+      linear-gradient(180deg, #080808 0%, var(--ze-bg) 48%, #101010 100%);
+    color: var(--ze-text);
+    padding-block: var(--ze-padding-top) var(--ze-padding-bottom);
+  }
+
+  .zentra-expert--glow {
+    background:
+      radial-gradient(circle at 88% 18%, rgba(58, 141, 255, 0.055), transparent 34%),
+      radial-gradient(circle at 52% 58%, rgba(255, 63, 216, 0.035), transparent 42%),
+      radial-gradient(ellipse at center, rgba(255, 255, 255, 0.025), transparent 58%),
+      linear-gradient(180deg, #080808 0%, var(--ze-bg) 48%, #101010 100%);
+  }
+
+  .zentra-expert__inner {
+    width: min(100% - 32px, 1180px);
+    margin-inline: auto;
+  }
+
+  .zentra-expert--full .zentra-expert__inner {
+    width: min(100% - 32px, 1440px);
+  }
+
+  .zentra-expert__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+    gap: clamp(36px, 6vw, 76px);
+    align-items: center;
+  }
+
+  .zentra-expert__visual {
+    position: relative;
+    min-height: 560px;
+    overflow: hidden;
+    border: 1px solid var(--ze-card-border);
+    border-radius: 20px;
+    background:
+      radial-gradient(circle at 78% 22%, rgba(58, 141, 255, 0.08), transparent 34%),
+      radial-gradient(circle at 30% 78%, rgba(255, 63, 216, 0.045), transparent 38%),
+      linear-gradient(145deg, rgba(255, 255, 255, 0.04), transparent 44%),
+      var(--ze-card-bg);
+    box-shadow: 0 24px 70px rgb(0 0 0 / 0.24);
+  }
+
+  .zentra-expert__visual::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      linear-gradient(180deg, transparent 48%, rgba(0, 0, 0, 0.24)),
+      radial-gradient(ellipse at center, transparent 48%, rgba(0, 0, 0, 0.32));
+  }
+
+  .zentra-expert__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 560px;
+    object-fit: cover;
+  }
+
+  .zentra-expert__placeholder {
+    display: grid;
+    min-height: 560px;
+    place-items: center;
+  }
+
+  .zentra-expert__placeholder-mark {
+    display: grid;
+    width: min(260px, 48vw);
+    aspect-ratio: 1;
+    place-items: center;
+    border: 1px solid rgb(255 255 255 / 0.09);
+    border-radius: 999px;
+    background:
+      radial-gradient(circle, rgba(255, 255, 255, 0.055), transparent 55%),
+      radial-gradient(circle at 74% 26%, rgba(58, 141, 255, 0.12), transparent 38%),
+      radial-gradient(circle at 28% 80%, rgba(255, 63, 216, 0.055), transparent 38%);
+  }
+
+  .zentra-expert__placeholder-mark span {
+    display: block;
+    width: 38%;
+    aspect-ratio: 1;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 999px;
+    box-shadow:
+      0 0 0 26px rgba(255, 255, 255, 0.035),
+      0 0 42px rgba(58, 141, 255, 0.12);
+  }
+
+  .zentra-expert__badge {
+    position: absolute;
+    inset: auto 22px 22px auto;
+    z-index: 2;
+    max-width: calc(100% - 44px);
+    padding: 12px 14px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 999px;
+    background: rgba(11, 11, 11, 0.72);
+    color: var(--ze-text);
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    line-height: 1;
+    text-transform: uppercase;
+    backdrop-filter: blur(14px);
+  }
+
+  .zentra-expert__eyebrow {
+    margin: 0 0 12px;
+    color: var(--ze-accent);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  .zentra-expert__heading {
+    max-width: 720px;
+    margin: 0;
+    color: var(--ze-text);
+    font-size: clamp(2.25rem, 4.8vw, 4.85rem);
+    font-weight: 800;
+    letter-spacing: 0;
+    line-height: 0.95;
+  }
+
+  .zentra-expert__subheading {
+    max-width: 620px;
+    margin-block-start: 18px;
+    color: var(--ze-muted);
+    font-size: clamp(1rem, 1.35vw, 1.12rem);
+    line-height: 1.65;
+  }
+
+  .zentra-expert__body {
+    max-width: 640px;
+    margin-block-start: 24px;
+    color: var(--ze-muted);
+    font-size: 1rem;
+    line-height: 1.72;
+  }
+
+  .zentra-expert__trust-list {
+    display: grid;
+    gap: 14px;
+    margin-block-start: 30px;
+  }
+
+  .zentra-expert__trust-item {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 14px;
+    align-items: start;
+    padding: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    background:
+      linear-gradient(145deg, rgba(255, 255, 255, 0.035), transparent 72%),
+      rgba(255, 255, 255, 0.018);
+    transition:
+      border-color 0.25s ease,
+      box-shadow 0.25s ease,
+      transform 0.25s ease;
+  }
+
+  .zentra-expert__trust-item:hover {
+    border-color: color-mix(in srgb, var(--ze-icon-color) 46%, rgba(255, 255, 255, 0.08));
+    box-shadow: 0 10px 24px color-mix(in srgb, var(--ze-icon-color) 10%, transparent);
+    transform: translateY(-3px);
+  }
+
+  .zentra-expert__trust-icon {
+    display: block;
+    width: 13px;
+    height: 13px;
+    margin-block-start: 4px;
+    border-radius: 999px;
+    background: var(--ze-icon-color);
+    box-shadow:
+      0 0 0 7px color-mix(in srgb, var(--ze-icon-color) 12%, transparent),
+      0 0 18px color-mix(in srgb, var(--ze-icon-color) 42%, transparent);
+  }
+
+  .zentra-expert__trust-title {
+    margin: 0;
+    color: var(--ze-text);
+    font-size: 1rem;
+    font-weight: 800;
+    letter-spacing: 0;
+    line-height: 1.25;
+  }
+
+  .zentra-expert__trust-text {
+    margin-block-start: 6px;
+    color: var(--ze-muted);
+    font-size: 0.94rem;
+    line-height: 1.55;
+  }
+
+  .zentra-expert__cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    margin-block-start: 28px;
+    padding: 0 18px;
+    border: 1px solid var(--ze-card-border);
+    border-radius: 8px;
+    background: transparent;
+    color: var(--ze-text);
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    line-height: 1;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition:
+      background-color 180ms ease,
+      border-color 180ms ease,
+      box-shadow 180ms ease,
+      color 180ms ease;
+  }
+
+  .zentra-expert__cta:hover {
+    border-color: var(--ze-accent);
+    background: var(--ze-accent);
+    color: #ffffff;
+    box-shadow: 0 0 12px rgba(255, 42, 42, 0.32);
+  }
+
+  @media screen and (max-width: 989px) {
+    .zentra-expert__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .zentra-expert__visual,
+    .zentra-expert__image,
+    .zentra-expert__placeholder {
+      min-height: 460px;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .zentra-expert {
+      padding-block: calc(var(--ze-padding-top) * 0.72) calc(var(--ze-padding-bottom) * 0.72);
+    }
+
+    .zentra-expert__inner,
+    .zentra-expert--full .zentra-expert__inner {
+      width: min(100% - 24px, 1180px);
+    }
+
+    .zentra-expert__grid {
+      gap: 30px;
+    }
+
+    .zentra-expert__visual,
+    .zentra-expert__image,
+    .zentra-expert__placeholder {
+      min-height: 360px;
+    }
+
+    .zentra-expert__badge {
+      inset: auto 16px 16px 16px;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .zentra-expert__trust-item {
+      padding: 16px;
+    }
+
+    .zentra-expert__cta {
+      width: 100%;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Expert credibility",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "EXPERT-BACKED DESIGN"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Designed with a kinesiologist."
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Built around real ergonomic principles to help gamers play longer with less strain."
+    },
+    {
+      "type": "textarea",
+      "id": "body_text",
+      "label": "Body text",
+      "default": "This isn’t just gaming gear. Every recommendation is shaped by movement, posture and setup fundamentals that support longer, more comfortable sessions."
+    },
+    {
+      "type": "image_picker",
+      "id": "expert_image",
+      "label": "Expert image"
+    },
+    {
+      "type": "text",
+      "id": "expert_badge_text",
+      "label": "Expert badge text",
+      "default": "Kinesiologist-backed"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "CTA label",
+      "default": "Learn more"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "CTA link"
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "Section width",
+      "options": [
+        {
+          "value": "page",
+          "label": "Page"
+        },
+        {
+          "value": "full",
+          "label": "Full"
+        }
+      ],
+      "default": "page"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_background_glow",
+      "label": "Enable subtle background glow",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "color_background",
+      "label": "Background",
+      "default": "#0B0B0B"
+    },
+    {
+      "type": "color",
+      "id": "color_text",
+      "label": "Text",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "color_muted",
+      "label": "Muted text",
+      "default": "#B8B8B8"
+    },
+    {
+      "type": "color",
+      "id": "color_accent",
+      "label": "Accent",
+      "default": "#FF2A2A"
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "Card background",
+      "default": "#141414"
+    },
+    {
+      "type": "color",
+      "id": "card_border",
+      "label": "Card border",
+      "default": "#2A2A2A"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "section_padding_top",
+      "label": "Top padding",
+      "min": 40,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "section_padding_bottom",
+      "label": "Bottom padding",
+      "min": 40,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 100
+    }
+  ],
+  "blocks": [
+    {
+      "type": "trust_point",
+      "name": "Trust point",
+      "limit": 6,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Real ergonomic principles"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Setup advice built around posture, alignment and long-session comfort."
+        },
+        {
+          "type": "color",
+          "id": "icon_color",
+          "label": "Icon color"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Expert credibility",
+      "settings": {
+        "eyebrow": "EXPERT-BACKED DESIGN",
+        "heading": "Designed with a kinesiologist.",
+        "subheading": "Built around real ergonomic principles to help gamers play longer with less strain.",
+        "body_text": "This isn’t just gaming gear. Every recommendation is shaped by movement, posture and setup fundamentals that support longer, more comfortable sessions.",
+        "expert_badge_text": "Kinesiologist-backed",
+        "cta_label": "Learn more",
+        "section_width": "page",
+        "enable_background_glow": true,
+        "color_background": "#0B0B0B",
+        "color_text": "#FFFFFF",
+        "color_muted": "#B8B8B8",
+        "color_accent": "#FF2A2A",
+        "card_background": "#141414",
+        "card_border": "#2A2A2A",
+        "section_padding_top": 100,
+        "section_padding_bottom": 100
+      },
+      "blocks": [
+        {
+          "type": "trust_point",
+          "settings": {
+            "title": "Real ergonomic principles",
+            "description": "Setup advice built around posture, alignment and long-session comfort.",
+            "icon_color": "#8FA7FF"
+          }
+        },
+        {
+          "type": "trust_point",
+          "settings": {
+            "title": "Built for gamers",
+            "description": "Designed for real gaming habits, not generic office setups.",
+            "icon_color": "#3A8DFF"
+          }
+        },
+        {
+          "type": "trust_point",
+          "settings": {
+            "title": "Performance without compromise",
+            "description": "Better comfort, better positioning and a cleaner setup experience.",
+            "icon_color": "#B8B8B8"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
