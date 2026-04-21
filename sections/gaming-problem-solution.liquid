@@ -102,13 +102,7 @@
   .zentra-problem-solution {
     position: relative;
     z-index: 1;
-    background:
-      radial-gradient(circle at 78% 18%, var(--zps-glow-secondary-soft), transparent 36%),
-      radial-gradient(circle at 23% 32%, var(--zps-glow-tertiary-soft), transparent 34%),
-      radial-gradient(circle at 14% 88%, var(--zps-glow-primary-soft), transparent 42%),
-      radial-gradient(circle at 50% 62%, rgba(255, 255, 255, 0.028), transparent 58%),
-      linear-gradient(180deg, #0b0b0b 0%, #080808 54%, #0b0b0b 100%),
-      var(--zps-bg);
+    background: var(--zps-bg);
     color: var(--zps-text);
     padding-block: var(--zps-padding-top) var(--zps-padding-bottom);
   }
@@ -128,11 +122,16 @@
     position: absolute;
     inset: 0 0 auto;
     height: 220px;
+    display: none;
     pointer-events: none;
     background:
       radial-gradient(ellipse at 50% 0%, var(--zps-glow-secondary-soft), transparent 58%),
       linear-gradient(180deg, rgba(255, 255, 255, 0.018), transparent 68%);
     z-index: 0;
+  }
+
+  .zentra-problem-solution--glow::before {
+    display: block;
   }
 
   .zentra-problem-solution__inner {
