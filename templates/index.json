@@ -62,7 +62,7 @@
         "columns_desktop": "4",
         "columns_mobile": "2",
         "section_width": "full",
-        "enable_gradient_background": false,
+        "enable_gradient_background": true,
         "gradient_primary_color": "#ff2a2a",
         "gradient_secondary_color": "#3a8dff",
         "gradient_tertiary_color": "#ff3fd8",
