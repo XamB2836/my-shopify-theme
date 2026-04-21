@@ -15,6 +15,12 @@
     --zps-text: {{ section.settings.color_text | default: '#FFFFFF' }};
     --zps-muted: {{ section.settings.color_muted | default: '#B8B8B8' }};
     --zps-accent: {{ section.settings.color_accent | default: '#FF2A2A' }};
+    --zps-glow-primary: {{ section.settings.gradient_primary_color | default: '#FF2A2A' | color_modify: 'alpha', 0.035 }};
+    --zps-glow-secondary: {{ section.settings.gradient_secondary_color | default: '#3A8DFF' | color_modify: 'alpha', 0.13 }};
+    --zps-glow-tertiary: {{ section.settings.gradient_tertiary_color | default: '#FF3FD8' | color_modify: 'alpha', 0.07 }};
+    --zps-glow-primary-soft: {{ section.settings.gradient_primary_color | default: '#FF2A2A' | color_modify: 'alpha', 0.025 }};
+    --zps-glow-secondary-soft: {{ section.settings.gradient_secondary_color | default: '#3A8DFF' | color_modify: 'alpha', 0.08 }};
+    --zps-glow-tertiary-soft: {{ section.settings.gradient_tertiary_color | default: '#FF3FD8' | color_modify: 'alpha', 0.045 }};
     --zps-card-bg: {{ section.settings.card_background | default: '#141414' }};
     --zps-card-border: {{ section.settings.card_border | default: '#2A2A2A' }};
     --zps-padding-top: {{ section.settings.section_padding_top | default: 88 }}px;
@@ -97,8 +103,9 @@
     position: relative;
     z-index: 1;
     background:
-      radial-gradient(circle at 78% 18%, rgba(58, 141, 255, 0.08), transparent 36%),
-      radial-gradient(circle at 23% 32%, rgba(255, 63, 216, 0.045), transparent 34%),
+      radial-gradient(circle at 78% 18%, var(--zps-glow-secondary-soft), transparent 36%),
+      radial-gradient(circle at 23% 32%, var(--zps-glow-tertiary-soft), transparent 34%),
+      radial-gradient(circle at 14% 88%, var(--zps-glow-primary-soft), transparent 42%),
       radial-gradient(circle at 50% 62%, rgba(255, 255, 255, 0.028), transparent 58%),
       linear-gradient(180deg, #0b0b0b 0%, #080808 54%, #0b0b0b 100%),
       var(--zps-bg);
@@ -108,8 +115,9 @@
 
   .zentra-problem-solution--glow {
     background:
-      radial-gradient(circle at 78% 18%, rgba(58, 141, 255, 0.13), transparent 38%),
-      radial-gradient(circle at 22% 30%, rgba(255, 63, 216, 0.07), transparent 36%),
+      radial-gradient(circle at 78% 18%, var(--zps-glow-secondary), transparent 38%),
+      radial-gradient(circle at 22% 30%, var(--zps-glow-tertiary), transparent 36%),
+      radial-gradient(circle at 14% 88%, var(--zps-glow-primary), transparent 42%),
       radial-gradient(circle at 50% 58%, rgba(255, 255, 255, 0.035), transparent 60%),
       linear-gradient(180deg, #0b0b0b 0%, #080808 54%, #0b0b0b 100%),
       var(--zps-bg);
@@ -122,7 +130,7 @@
     height: 220px;
     pointer-events: none;
     background:
-      radial-gradient(ellipse at 50% 0%, rgba(58, 141, 255, 0.08), transparent 58%),
+      radial-gradient(ellipse at 50% 0%, var(--zps-glow-secondary-soft), transparent 58%),
       linear-gradient(180deg, rgba(255, 255, 255, 0.018), transparent 68%);
     z-index: 0;
   }
@@ -400,13 +408,31 @@
     },
     {
       "type": "header",
-      "content": "Colors"
+      "content": "Background and colors"
     },
     {
       "type": "checkbox",
       "id": "enable_background_glow",
       "label": "Enable subtle background glow",
       "default": true
+    },
+    {
+      "type": "color",
+      "id": "gradient_primary_color",
+      "label": "Accent glow",
+      "default": "#FF2A2A"
+    },
+    {
+      "type": "color",
+      "id": "gradient_secondary_color",
+      "label": "Blue glow",
+      "default": "#3A8DFF"
+    },
+    {
+      "type": "color",
+      "id": "gradient_tertiary_color",
+      "label": "Pink glow",
+      "default": "#FF3FD8"
     },
     {
       "type": "color",
@@ -526,6 +552,9 @@
         "section_width": "page",
         "columns_desktop": "3",
         "enable_background_glow": true,
+        "gradient_primary_color": "#FF2A2A",
+        "gradient_secondary_color": "#3A8DFF",
+        "gradient_tertiary_color": "#FF3FD8",
         "color_background": "#0B0B0B",
         "color_text": "#FFFFFF",
         "color_muted": "#B8B8B8",
