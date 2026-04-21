@@ -117,7 +117,7 @@
         "text_size": 17,
         "primary_label": "Shop Setup",
         "primary_link": "shopify://collections/all",
-        "secondary_label": "",
+        "secondary_label": "See More",
         "secondary_link": "shopify://pages/about",
         "button_gap": 12,
         "feature_background": "#ffffff",
