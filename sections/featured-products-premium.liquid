@@ -5,6 +5,11 @@
   assign columns_mobile = section.settings.columns_mobile | default: '1'
   assign image_ratio = section.settings.image_ratio | default: 'portrait'
   assign section_width = section.settings.section_width | default: 'page'
+  assign enable_gradient_background = false
+
+  if section.settings.enable_gradient_background == true
+    assign enable_gradient_background = true
+  endif
 %}
 
 <section
@@ -13,16 +18,21 @@
     zentra-featured-products-{{ section.id }}
     zentra-featured-products--{{ section_width }}
     {% if section.settings.enable_hover_effect %}zentra-featured-products--hover{% endif %}
-    {% if section.settings.enable_gradient_background %}zentra-featured-products--gradient{% endif %}
   "
   style="
     --zf-bg: {{ section.settings.color_background | default: '#0B0B0B' }};
+    {% if enable_gradient_background %}
+      --zf-section-bg:
+        radial-gradient(circle at 15% 25%, {{ section.settings.gradient_primary_color | default: '#FF2A2A' | color_modify: 'alpha', 0.18 }}, transparent 40%),
+        radial-gradient(circle at 85% 30%, {{ section.settings.gradient_secondary_color | default: '#3A8DFF' | color_modify: 'alpha', 0.12 }}, transparent 40%),
+        radial-gradient(circle at 50% 80%, {{ section.settings.gradient_tertiary_color | default: '#FF3FD8' | color_modify: 'alpha', 0.08 }}, transparent 50%),
+        {{ section.settings.color_background | default: '#0B0B0B' }};
+    {% else %}
+      --zf-section-bg: {{ section.settings.color_background | default: '#0B0B0B' }};
+    {% endif %}
     --zf-text: {{ section.settings.color_text | default: '#FFFFFF' }};
     --zf-muted: {{ section.settings.color_muted_text | default: '#B8B8B8' }};
     --zf-accent: {{ section.settings.color_accent | default: '#FF2A2A' }};
-    --zf-gradient-primary: {{ section.settings.gradient_primary_color | default: '#FF2A2A' | color_modify: 'alpha', 0.18 }};
-    --zf-gradient-secondary: {{ section.settings.gradient_secondary_color | default: '#3A8DFF' | color_modify: 'alpha', 0.12 }};
-    --zf-gradient-tertiary: {{ section.settings.gradient_tertiary_color | default: '#FF3FD8' | color_modify: 'alpha', 0.08 }};
     --zf-card-bg: {{ section.settings.card_background | default: '#141414' }};
     --zf-card-border: {{ section.settings.card_border_color | default: '#2A2A2A' }};
     --zf-card-radius: {{ section.settings.card_radius | default: 18 }}px;
@@ -111,17 +121,9 @@
 
 <style>
   .zentra-featured-products {
-    background: var(--zf-bg);
+    background: var(--zf-section-bg);
     color: var(--zf-text);
     padding-block: var(--zf-padding-top) var(--zf-padding-bottom);
-  }
-
-  .zentra-featured-products--gradient {
-    background:
-      radial-gradient(circle at 15% 25%, var(--zf-gradient-primary), transparent 40%),
-      radial-gradient(circle at 85% 30%, var(--zf-gradient-secondary), transparent 40%),
-      radial-gradient(circle at 50% 80%, var(--zf-gradient-tertiary), transparent 50%),
-      var(--zf-bg);
   }
 
   .zentra-featured-products__inner {
@@ -517,7 +519,7 @@
       "type": "checkbox",
       "id": "enable_gradient_background",
       "label": "Enable subtle neon gradient background",
-      "default": true
+      "default": false
     },
     {
       "type": "color",
@@ -540,7 +542,7 @@
     {
       "type": "color",
       "id": "color_background",
-      "label": "Background",
+      "label": "Section background color",
       "default": "#0B0B0B"
     },
     {
