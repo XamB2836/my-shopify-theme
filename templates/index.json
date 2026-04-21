@@ -43,22 +43,13 @@
             "benefit_text": "More comfort, longer sessions",
             "custom_cta_label": "Shop Now"
           }
-        },
-        "product_ATjqdg": {
-          "type": "product",
-          "settings": {
-            "product": "",
-            "benefit_text": "Built for long sessions",
-            "custom_cta_label": ""
-          }
         }
       },
       "block_order": [
         "product_hmEaLY",
         "product_qEzAkU",
         "product_nXjxMY",
-        "product_Ek44ab",
-        "product_ATjqdg"
+        "product_Ek44ab"
       ],
       "name": "Featured products premium",
       "settings": {
@@ -71,7 +62,7 @@
         "columns_desktop": "4",
         "columns_mobile": "2",
         "section_width": "full",
-        "enable_gradient_background": false,
+        "enable_gradient_background": true,
         "gradient_primary_color": "#ff2a2a",
         "gradient_secondary_color": "#3a8dff",
         "gradient_tertiary_color": "#ff3fd8",
@@ -138,14 +129,14 @@
         "solution_line": "We fix your setup — not just your posture.",
         "section_width": "page",
         "columns_desktop": "3",
-        "enable_background_glow": false,
+        "enable_background_glow": true,
         "color_background": "#0b0b0b",
         "color_text": "#ffffff",
         "color_muted": "#b8b8b8",
         "color_accent": "#ff2a2a",
         "card_background": "#141414",
         "card_border": "#2a2a2a",
-        "section_padding_top": 104,
+        "section_padding_top": 120,
         "section_padding_bottom": 88
       }
     }
