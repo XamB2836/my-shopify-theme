@@ -62,7 +62,7 @@
         "columns_desktop": "4",
         "columns_mobile": "2",
         "section_width": "full",
-        "enable_gradient_background": true,
+        "enable_gradient_background": false,
         "gradient_primary_color": "#ff2a2a",
         "gradient_secondary_color": "#3a8dff",
         "gradient_tertiary_color": "#ff3fd8",
@@ -135,7 +135,7 @@
         "color_muted": "#b8b8b8",
         "color_accent": "#ff2a2a",
         "card_background": "#141414",
-        "card_border": "#2a2a2a",
+        "card_border": "rgba(0,0,0,0)",
         "section_padding_top": 120,
         "section_padding_bottom": 88
       }
