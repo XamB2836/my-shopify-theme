@@ -111,6 +111,7 @@
     background:
       radial-gradient(circle at 78% 18%, var(--zps-glow-secondary), transparent 38%),
       radial-gradient(circle at 22% 30%, var(--zps-glow-tertiary), transparent 36%),
+      radial-gradient(circle at 14% 88%, var(--zps-glow-primary), transparent 42%),
       radial-gradient(circle at 50% 58%, rgba(255, 255, 255, 0.035), transparent 60%),
       linear-gradient(180deg, #0b0b0b 0%, #080808 54%, #0b0b0b 100%),
       var(--zps-bg);
@@ -131,16 +132,6 @@
 
   .zentra-problem-solution--glow::before {
     display: block;
-  }
-
-  .zentra-problem-solution::after {
-    content: '';
-    position: absolute;
-    inset: 0 0 auto;
-    height: 120px;
-    pointer-events: none;
-    background: linear-gradient(180deg, transparent 0%, rgba(11, 11, 11, 0.38) 74%, #0b0b0b 100%);
-    z-index: 0;
   }
 
   .zentra-problem-solution__inner {

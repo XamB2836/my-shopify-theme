@@ -129,7 +129,7 @@
         "solution_line": "We fix your setup — not just your posture.",
         "section_width": "page",
         "columns_desktop": "3",
-        "enable_background_glow": true,
+        "enable_background_glow": false,
         "gradient_primary_color": "#ff2a2a",
         "gradient_secondary_color": "#3a8dff",
         "gradient_tertiary_color": "#ff3fd8",
