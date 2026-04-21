@@ -97,9 +97,10 @@
     position: relative;
     z-index: 1;
     background:
-      linear-gradient(180deg, rgba(0, 0, 0, 0.16), transparent 18%),
-      radial-gradient(circle at 50% 60%, rgba(255, 255, 255, 0.03), transparent 60%),
-      radial-gradient(circle at 80% 30%, rgba(58, 141, 255, 0.05), transparent 50%),
+      linear-gradient(180deg, rgba(11, 11, 11, 0.98) 0%, rgba(11, 11, 11, 0.9) 16%, rgba(9, 9, 9, 1) 100%),
+      radial-gradient(circle at 76% 18%, rgba(58, 141, 255, 0.055), transparent 34%),
+      radial-gradient(circle at 24% 32%, rgba(255, 63, 216, 0.026), transparent 34%),
+      radial-gradient(circle at 50% 62%, rgba(255, 255, 255, 0.025), transparent 56%),
       var(--zps-bg);
     color: var(--zps-text);
     padding-block: var(--zps-padding-top) var(--zps-padding-bottom);
@@ -107,19 +108,22 @@
 
   .zentra-problem-solution--glow {
     background:
-      linear-gradient(180deg, rgba(0, 0, 0, 0.16), transparent 18%),
-      radial-gradient(circle at 50% 60%, rgba(255, 255, 255, 0.03), transparent 60%),
-      radial-gradient(circle at 80% 30%, rgba(58, 141, 255, 0.05), transparent 50%),
+      linear-gradient(180deg, rgba(11, 11, 11, 0.98) 0%, rgba(11, 11, 11, 0.9) 16%, rgba(9, 9, 9, 1) 100%),
+      radial-gradient(circle at 76% 18%, rgba(58, 141, 255, 0.055), transparent 34%),
+      radial-gradient(circle at 24% 32%, rgba(255, 63, 216, 0.026), transparent 34%),
+      radial-gradient(circle at 50% 62%, rgba(255, 255, 255, 0.025), transparent 56%),
       var(--zps-bg);
   }
 
   .zentra-problem-solution::before {
     content: '';
     position: absolute;
-    inset: -96px 0 auto;
-    height: 180px;
+    inset: 0 0 auto;
+    height: 140px;
     pointer-events: none;
-    background: linear-gradient(180deg, transparent 0%, rgba(11, 11, 11, 0.42) 42%, rgba(11, 11, 11, 0.78) 76%, var(--zps-bg) 100%);
+    background:
+      linear-gradient(180deg, rgba(0, 0, 0, 0.32), transparent 100%),
+      radial-gradient(circle at 50% 0%, rgba(58, 141, 255, 0.045), transparent 42%);
     z-index: 0;
   }
 
