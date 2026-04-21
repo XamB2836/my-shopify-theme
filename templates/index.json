@@ -88,7 +88,7 @@
         "shop_all_label": "Shop all",
         "shop_all_link": "shopify://collections/all",
         "section_padding_top": 72,
-        "section_padding_bottom": 72,
+        "section_padding_bottom": 48,
         "card_radius": 18,
         "image_ratio": "square",
         "enable_hover_effect": true
@@ -138,14 +138,14 @@
         "solution_line": "We fix your setup — not just your posture.",
         "section_width": "page",
         "columns_desktop": "3",
-        "enable_background_glow": false,
+        "enable_background_glow": true,
         "color_background": "#0b0b0b",
         "color_text": "#ffffff",
         "color_muted": "#b8b8b8",
         "color_accent": "#ff2a2a",
         "card_background": "#141414",
         "card_border": "#2a2a2a",
-        "section_padding_top": 104,
+        "section_padding_top": 76,
         "section_padding_bottom": 88
       }
     }
