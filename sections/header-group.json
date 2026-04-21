@@ -100,7 +100,7 @@
         "overlay_opacity": 20,
         "overlay_blur": 0,
         "panel_background": "#141414",
-        "panel_opacity": 43,
+        "panel_opacity": 0,
         "panel_text_color": "#ffffff",
         "eyebrow": "ERGONOMIC GAMING",
         "heading": "Play Longer. Perform Better.",
