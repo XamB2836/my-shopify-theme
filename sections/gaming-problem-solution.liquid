@@ -1,0 +1,546 @@
+{% liquid
+  assign section_width = section.settings.section_width | default: 'page'
+  assign columns_desktop = section.settings.columns_desktop | default: 3
+%}
+
+<section
+  class="
+    zentra-problem-solution
+    zentra-problem-solution-{{ section.id }}
+    zentra-problem-solution--{{ section_width }}
+    {% if section.settings.enable_background_glow %}zentra-problem-solution--glow{% endif %}
+  "
+  style="
+    --zps-bg: {{ section.settings.color_background | default: '#0B0B0B' }};
+    --zps-text: {{ section.settings.color_text | default: '#FFFFFF' }};
+    --zps-muted: {{ section.settings.color_muted | default: '#B8B8B8' }};
+    --zps-accent: {{ section.settings.color_accent | default: '#FF2A2A' }};
+    --zps-card-bg: {{ section.settings.card_background | default: '#141414' }};
+    --zps-card-border: {{ section.settings.card_border | default: '#2A2A2A' }};
+    --zps-padding-top: {{ section.settings.section_padding_top | default: 90 }}px;
+    --zps-padding-bottom: {{ section.settings.section_padding_bottom | default: 90 }}px;
+    --zps-columns-desktop: {{ columns_desktop }};
+  "
+>
+  <div class="zentra-problem-solution__inner">
+    <div class="zentra-problem-solution__header">
+      {% if section.settings.eyebrow != blank %}
+        <p class="zentra-problem-solution__eyebrow">{{ section.settings.eyebrow }}</p>
+      {% endif %}
+
+      {% if section.settings.heading != blank %}
+        <h2 class="zentra-problem-solution__heading">{{ section.settings.heading }}</h2>
+      {% endif %}
+
+      {% if section.settings.subheading != blank %}
+        <div class="zentra-problem-solution__subheading">
+          {{ section.settings.subheading | escape | newline_to_br }}
+        </div>
+      {% endif %}
+    </div>
+
+    {% if section.blocks.size > 0 %}
+      <div class="zentra-problem-solution__grid">
+        {% for block in section.blocks %}
+          {% liquid
+            assign accent_override = block.settings.accent_color_override | default: section.settings.color_accent
+            assign icon_style = block.settings.icon_style | default: 'pulse'
+          %}
+
+          <article
+            class="zentra-problem-solution__card"
+            style="--zps-block-accent: {{ accent_override }};"
+            {{ block.shopify_attributes }}
+          >
+            <div class="zentra-problem-solution__icon zentra-problem-solution__icon--{{ icon_style }}" aria-hidden="true">
+              {% case icon_style %}
+                {% when 'angle' %}
+                  <svg viewBox="0 0 24 24" focusable="false">
+                    <path d="M5 17L12 7l7 10" />
+                    <path d="M8 17h8" />
+                  </svg>
+                {% when 'support' %}
+                  <svg viewBox="0 0 24 24" focusable="false">
+                    <path d="M7 20V8a5 5 0 0 1 10 0v12" />
+                    <path d="M5 20h14" />
+                    <path d="M9 12h6" />
+                  </svg>
+                {% else %}
+                  <span class="zentra-problem-solution__pulse"></span>
+              {% endcase %}
+            </div>
+
+            {% if block.settings.title != blank %}
+              <h3 class="zentra-problem-solution__card-title">{{ block.settings.title }}</h3>
+            {% endif %}
+
+            {% if block.settings.description != blank %}
+              <div class="zentra-problem-solution__card-text">
+                {{ block.settings.description | escape | newline_to_br }}
+              </div>
+            {% endif %}
+          </article>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    {% if section.settings.solution_line != blank %}
+      <div class="zentra-problem-solution__solution">
+        {{ section.settings.solution_line }}
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+<style>
+  .zentra-problem-solution {
+    background: var(--zps-bg);
+    color: var(--zps-text);
+    padding-block: var(--zps-padding-top) var(--zps-padding-bottom);
+  }
+
+  .zentra-problem-solution--glow {
+    background:
+      radial-gradient(circle at 15% 20%, rgba(255, 42, 42, 0.08), transparent 35%),
+      radial-gradient(circle at 85% 30%, rgba(58, 141, 255, 0.06), transparent 35%),
+      var(--zps-bg);
+  }
+
+  .zentra-problem-solution__inner {
+    width: min(100% - 32px, 1180px);
+    margin-inline: auto;
+  }
+
+  .zentra-problem-solution--full .zentra-problem-solution__inner {
+    width: min(100% - 32px, 1440px);
+  }
+
+  .zentra-problem-solution__header {
+    max-width: 760px;
+    margin-inline: auto;
+    margin-block-end: 40px;
+    text-align: center;
+  }
+
+  .zentra-problem-solution__eyebrow {
+    margin: 0 0 12px;
+    color: var(--zps-accent);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  .zentra-problem-solution__heading {
+    margin: 0;
+    color: var(--zps-text);
+    font-size: clamp(2.35rem, 5vw, 5rem);
+    font-weight: 800;
+    letter-spacing: 0;
+    line-height: 0.95;
+  }
+
+  .zentra-problem-solution__subheading {
+    max-width: 620px;
+    margin: 18px auto 0;
+    color: var(--zps-muted);
+    font-size: clamp(1rem, 1.35vw, 1.12rem);
+    line-height: 1.65;
+  }
+
+  .zentra-problem-solution__grid {
+    display: grid;
+    grid-template-columns: repeat(var(--zps-columns-desktop), minmax(0, 1fr));
+    gap: 28px;
+  }
+
+  .zentra-problem-solution__card {
+    position: relative;
+    min-width: 0;
+    min-height: 244px;
+    overflow: hidden;
+    padding: 30px;
+    border: 1px solid var(--zps-card-border);
+    border-radius: 18px;
+    background:
+      linear-gradient(145deg, rgba(255, 255, 255, 0.035), transparent 38%),
+      var(--zps-card-bg);
+    transition:
+      border-color 0.28s ease,
+      box-shadow 0.28s ease,
+      transform 0.28s ease;
+  }
+
+  .zentra-problem-solution__card::after {
+    content: '';
+    position: absolute;
+    inset: auto 24px 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--zps-block-accent) 55%, transparent), transparent);
+    opacity: 0.45;
+  }
+
+  .zentra-problem-solution__card:hover {
+    border-color: color-mix(in srgb, var(--zps-block-accent) 50%, transparent);
+    box-shadow: 0 10px 24px rgba(255, 42, 42, 0.08);
+    transform: translateY(-4px);
+  }
+
+  .zentra-problem-solution__icon {
+    display: grid;
+    width: 42px;
+    height: 42px;
+    margin-block-end: 26px;
+    place-items: center;
+    border: 1px solid color-mix(in srgb, var(--zps-block-accent) 44%, #2a2a2a);
+    border-radius: 999px;
+    background:
+      radial-gradient(circle, color-mix(in srgb, var(--zps-block-accent) 22%, transparent), transparent 68%),
+      #101010;
+    color: var(--zps-block-accent);
+    box-shadow: 0 0 18px color-mix(in srgb, var(--zps-block-accent) 16%, transparent);
+  }
+
+  .zentra-problem-solution__icon svg {
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.8;
+  }
+
+  .zentra-problem-solution__pulse {
+    display: block;
+    width: 11px;
+    height: 11px;
+    border-radius: 999px;
+    background: currentColor;
+    box-shadow:
+      0 0 0 7px color-mix(in srgb, currentColor 12%, transparent),
+      0 0 18px color-mix(in srgb, currentColor 45%, transparent);
+  }
+
+  .zentra-problem-solution__card-title {
+    margin: 0;
+    color: var(--zps-text);
+    font-size: 1.24rem;
+    font-weight: 800;
+    letter-spacing: 0.2px;
+    line-height: 1.15;
+  }
+
+  .zentra-problem-solution__card-text {
+    max-width: 28rem;
+    margin-block-start: 12px;
+    color: var(--zps-muted);
+    font-size: 0.96rem;
+    line-height: 1.62;
+  }
+
+  .zentra-problem-solution__solution {
+    max-width: 820px;
+    margin: 46px auto 0;
+    color: var(--zps-text);
+    font-size: clamp(1.35rem, 2.5vw, 2.35rem);
+    font-weight: 800;
+    letter-spacing: 0;
+    line-height: 1.12;
+    text-align: center;
+  }
+
+  .zentra-problem-solution__solution::after {
+    content: '';
+    display: block;
+    width: min(180px, 46vw);
+    height: 1px;
+    margin: 20px auto 0;
+    background: linear-gradient(90deg, transparent, var(--zps-accent), rgba(58, 141, 255, 0.7), transparent);
+    opacity: 0.72;
+  }
+
+  @media screen and (max-width: 989px) {
+    .zentra-problem-solution__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .zentra-problem-solution {
+      padding-block: calc(var(--zps-padding-top) * 0.72) calc(var(--zps-padding-bottom) * 0.72);
+    }
+
+    .zentra-problem-solution__inner,
+    .zentra-problem-solution--full .zentra-problem-solution__inner {
+      width: min(100% - 24px, 1180px);
+    }
+
+    .zentra-problem-solution__header {
+      margin-block-end: 28px;
+      text-align: left;
+    }
+
+    .zentra-problem-solution__subheading {
+      margin-inline: 0;
+    }
+
+    .zentra-problem-solution__grid {
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+
+    .zentra-problem-solution__card {
+      min-height: auto;
+      padding: 24px;
+    }
+
+    .zentra-problem-solution__icon {
+      margin-block-end: 22px;
+    }
+
+    .zentra-problem-solution__solution {
+      margin-block-start: 34px;
+      text-align: left;
+    }
+
+    .zentra-problem-solution__solution::after {
+      margin-inline: 0;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Gaming problem solution",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "SETUP PROBLEMS"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Gaming shouldn’t hurt."
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Long gaming sessions can lead to wrist pain, neck tension and poor posture."
+    },
+    {
+      "type": "text",
+      "id": "solution_line",
+      "label": "Solution line",
+      "default": "We fix your setup — not just your posture."
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "Section width",
+      "options": [
+        {
+          "value": "page",
+          "label": "Page"
+        },
+        {
+          "value": "full",
+          "label": "Full"
+        }
+      ],
+      "default": "page"
+    },
+    {
+      "type": "select",
+      "id": "columns_desktop",
+      "label": "Desktop columns",
+      "options": [
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        },
+        {
+          "value": "3",
+          "label": "3"
+        }
+      ],
+      "default": "3"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_background_glow",
+      "label": "Enable subtle background glow",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "color_background",
+      "label": "Background",
+      "default": "#0B0B0B"
+    },
+    {
+      "type": "color",
+      "id": "color_text",
+      "label": "Text",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "color_muted",
+      "label": "Muted text",
+      "default": "#B8B8B8"
+    },
+    {
+      "type": "color",
+      "id": "color_accent",
+      "label": "Accent",
+      "default": "#FF2A2A"
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "Card background",
+      "default": "#141414"
+    },
+    {
+      "type": "color",
+      "id": "card_border",
+      "label": "Card border",
+      "default": "#2A2A2A"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "section_padding_top",
+      "label": "Top padding",
+      "min": 32,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 90
+    },
+    {
+      "type": "range",
+      "id": "section_padding_bottom",
+      "label": "Bottom padding",
+      "min": 32,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 90
+    }
+  ],
+  "blocks": [
+    {
+      "type": "problem_item",
+      "name": "Problem item",
+      "limit": 6,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Wrist pain"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Poor desk setup puts constant pressure on your wrists."
+        },
+        {
+          "type": "select",
+          "id": "icon_style",
+          "label": "Icon style",
+          "options": [
+            {
+              "value": "pulse",
+              "label": "Pulse"
+            },
+            {
+              "value": "angle",
+              "label": "Angle"
+            },
+            {
+              "value": "support",
+              "label": "Support"
+            }
+          ],
+          "default": "pulse"
+        },
+        {
+          "type": "color",
+          "id": "accent_color_override",
+          "label": "Accent color override"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Gaming problem solution",
+      "settings": {
+        "eyebrow": "SETUP PROBLEMS",
+        "heading": "Gaming shouldn’t hurt.",
+        "subheading": "Long gaming sessions can lead to wrist pain, neck tension and poor posture.",
+        "solution_line": "We fix your setup — not just your posture.",
+        "section_width": "page",
+        "columns_desktop": "3",
+        "enable_background_glow": true,
+        "color_background": "#0B0B0B",
+        "color_text": "#FFFFFF",
+        "color_muted": "#B8B8B8",
+        "color_accent": "#FF2A2A",
+        "card_background": "#141414",
+        "card_border": "#2A2A2A",
+        "section_padding_top": 90,
+        "section_padding_bottom": 90
+      },
+      "blocks": [
+        {
+          "type": "problem_item",
+          "settings": {
+            "title": "Wrist pain",
+            "description": "Poor desk setup puts constant pressure on your wrists.",
+            "icon_style": "pulse"
+          }
+        },
+        {
+          "type": "problem_item",
+          "settings": {
+            "title": "Neck tension",
+            "description": "Incorrect screen height forces unnatural posture.",
+            "icon_style": "angle",
+            "accent_color_override": "#3A8DFF"
+          }
+        },
+        {
+          "type": "problem_item",
+          "settings": {
+            "title": "Back fatigue",
+            "description": "Long sessions without support strain your lower back.",
+            "icon_style": "support",
+            "accent_color_override": "#FF3FD8"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

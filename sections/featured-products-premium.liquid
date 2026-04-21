@@ -20,8 +20,9 @@
     --zf-text: {{ section.settings.color_text | default: '#FFFFFF' }};
     --zf-muted: {{ section.settings.color_muted_text | default: '#B8B8B8' }};
     --zf-accent: {{ section.settings.color_accent | default: '#FF2A2A' }};
-    --zf-pink: #FF3FD8;
-    --zf-blue: #3A8DFF;
+    --zf-gradient-primary: {{ section.settings.gradient_primary_color | default: '#FF2A2A' | color_modify: 'alpha', 0.18 }};
+    --zf-gradient-secondary: {{ section.settings.gradient_secondary_color | default: '#3A8DFF' | color_modify: 'alpha', 0.12 }};
+    --zf-gradient-tertiary: {{ section.settings.gradient_tertiary_color | default: '#FF3FD8' | color_modify: 'alpha', 0.08 }};
     --zf-card-bg: {{ section.settings.card_background | default: '#141414' }};
     --zf-card-border: {{ section.settings.card_border_color | default: '#2A2A2A' }};
     --zf-card-radius: {{ section.settings.card_radius | default: 18 }}px;
@@ -110,19 +111,16 @@
 
 <style>
   .zentra-featured-products {
-    background:
-      radial-gradient(circle at 15% 25%, rgba(255, 42, 42, 0.18), transparent 40%),
-      radial-gradient(circle at 85% 30%, rgba(58, 141, 255, 0.12), transparent 40%),
-      radial-gradient(circle at 50% 80%, rgba(255, 63, 216, 0.08), transparent 50%),
-      #0b0b0b;
+    background: var(--zf-bg);
     color: var(--zf-text);
     padding-block: var(--zf-padding-top) var(--zf-padding-bottom);
   }
 
   .zentra-featured-products--gradient {
     background:
-      radial-gradient(circle at 20% 30%, rgba(255, 42, 42, 0.12), transparent 40%),
-      radial-gradient(circle at 80% 70%, rgba(58, 141, 255, 0.12), transparent 40%),
+      radial-gradient(circle at 15% 25%, var(--zf-gradient-primary), transparent 40%),
+      radial-gradient(circle at 85% 30%, var(--zf-gradient-secondary), transparent 40%),
+      radial-gradient(circle at 50% 80%, var(--zf-gradient-tertiary), transparent 50%),
       var(--zf-bg);
   }
 
@@ -520,6 +518,24 @@
       "id": "enable_gradient_background",
       "label": "Enable subtle neon gradient background",
       "default": true
+    },
+    {
+      "type": "color",
+      "id": "gradient_primary_color",
+      "label": "Gradient primary glow",
+      "default": "#FF2A2A"
+    },
+    {
+      "type": "color",
+      "id": "gradient_secondary_color",
+      "label": "Gradient secondary glow",
+      "default": "#3A8DFF"
+    },
+    {
+      "type": "color",
+      "id": "gradient_tertiary_color",
+      "label": "Gradient tertiary glow",
+      "default": "#FF3FD8"
     },
     {
       "type": "color",
