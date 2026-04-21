@@ -94,6 +94,8 @@
 
 <style>
   .zentra-problem-solution {
+    position: relative;
+    z-index: 1;
     background:
       linear-gradient(180deg, rgba(0, 0, 0, 0.16), transparent 18%),
       radial-gradient(circle at 50% 60%, rgba(255, 255, 255, 0.03), transparent 60%),
@@ -111,7 +113,19 @@
       var(--zps-bg);
   }
 
+  .zentra-problem-solution::before {
+    content: '';
+    position: absolute;
+    inset: -96px 0 auto;
+    height: 180px;
+    pointer-events: none;
+    background: linear-gradient(180deg, transparent 0%, rgba(11, 11, 11, 0.42) 42%, rgba(11, 11, 11, 0.78) 76%, var(--zps-bg) 100%);
+    z-index: 0;
+  }
+
   .zentra-problem-solution__inner {
+    position: relative;
+    z-index: 1;
     width: min(100% - 32px, 1180px);
     margin-inline: auto;
   }
